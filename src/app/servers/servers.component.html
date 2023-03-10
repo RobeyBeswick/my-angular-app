@@ -1,1 +1,24 @@
-<app-server></app-server> <app-server></app-server>
+<!-- below is an example of property binding, allow new server is  -->
+<label>Server name</label>
+<!-- The below line is an example of using event binding to get an input given some event-->
+<!-- <input type="text" class="form-control" (input)="onUpdateServerName($event)" /> -->
+<!-- below is an example of data binding which is either property or event binding using angular -->
+<input type="text" class="form-control" [(ngModel)]="serverName" />
+<!-- <p>{{ serverName }}</p> -->
+<button
+  class="btn btn-primary"
+  [disabled]="!allowNewServer"
+  (click)="onCreateServer()"
+>
+  Add Server
+</button>
+<!-- <p [innerText]="allowNewServer"></p> -->
+<!-- <p>{{ serverCreationStatus }}</p> -->
+<!-- ngIf is an inbuilt angular directive, it's really cool. If this is not true, this element does not exist in the DOM. It is not hidden, it simply is not there -->
+<!-- <p *ngIf="serverCreated; else noServer"> -->
+<p *ngIf="serverCreated">Server was created, server is {{ serverName }}</p>
+<!-- <ng-template #noServer>
+  <p>No server was created!</p>
+</ng-template> -->
+<!-- <app-server></app-server> -->
+<app-server *ngFor="let server of servers"></app-server>
